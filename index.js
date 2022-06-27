@@ -1,6 +1,7 @@
 import express from 'express';
 import bodyParser from 'body-parser';
-import usersRoutes from './routes/users/index.js';
+import userRoutes from './routes/user/index.js';
+import jobRoutes from './routes/job/index.js';
 import { connectDB, DB_AUTH } from './db/index.js';
 import cors from 'cors';
 
@@ -11,7 +12,8 @@ const API = `/api/v1`;
 app.use(cors());
 app.use(bodyParser.json());
 
-app.use(`${API}/user`, usersRoutes);
+app.use(`${API}/user`, userRoutes);
+app.use(`${API}/job`, jobRoutes);
 
 (async () => {
   try {
