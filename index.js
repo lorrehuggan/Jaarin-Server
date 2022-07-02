@@ -1,10 +1,10 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import dotenv from 'dotenv';
 import userRoutes from './routes/user/index.js';
 import jobRoutes from './routes/job/index.js';
 import { connectDB, DB_AUTH } from './db/index.js';
 import cors from 'cors';
-import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
@@ -19,7 +19,7 @@ app.use(`${API}/job`, jobRoutes);
 
 (async () => {
   try {
-    await connectDB(DB_AUTH);
+    await connectDB(!DB_AUTH);
     console.log('connected to db');
     app.listen(process.env.PORT || PORT, () => {
       console.log(`Server running on port ${PORT}`);
