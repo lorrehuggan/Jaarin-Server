@@ -4,6 +4,7 @@ import userRoutes from './routes/user/index.js';
 import jobRoutes from './routes/job/index.js';
 import { connectDB, DB_AUTH } from './db/index.js';
 import cors from 'cors';
+dotenv.config();
 
 const app = express();
 const PORT = 5000;
