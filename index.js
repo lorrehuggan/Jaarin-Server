@@ -8,7 +8,7 @@ import cors from 'cors';
 dotenv.config();
 
 const app = express();
-const PORT = 5000;
+const PORT = process.env.PORT || 5000;
 const API = `/api/v1`;
 
 app.use(cors());
@@ -23,9 +23,9 @@ app.use(`${API}/job`, jobRoutes);
 
 (async () => {
   try {
-    await connectDB(!DB_AUTH);
+    await connectDB(DB_AUTH);
     console.log('connected to db');
-    app.listen(process.env.PORT || PORT, () => {
+    app.listen(PORT, () => {
       console.log(`Server running on port ${PORT}`);
     });
   } catch (error) {
