@@ -19,7 +19,7 @@ app.use(`${API}/job`, jobRoutes);
   try {
     await connectDB(DB_AUTH);
     console.log('connected to db');
-    app.listen(PORT, () => {
+    app.listen(process.env.PORT || PORT, () => {
       console.log(`Server running on port ${PORT}`);
     });
   } catch (error) {
