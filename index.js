@@ -14,6 +14,10 @@ const API = `/api/v1`;
 app.use(cors());
 app.use(bodyParser.json());
 
+app.get('/', (req, res) => {
+  res.send('Hello World');
+});
+
 app.use(`${API}/user`, userRoutes);
 app.use(`${API}/job`, jobRoutes);
 
